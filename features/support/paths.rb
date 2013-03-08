@@ -24,7 +24,10 @@ module NavigationHelpers
 			   "/movies/#{movies_by_title[0].id}"
 		   end
 		 end
-
+		 when /^the Similar Movies page for "(.*)"$/ then begin
+		 	 movies_by_title = Movie.where({:title => $1})
+			 "/movies/#{movies_by_title[0].id}/director"
+		 end
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
